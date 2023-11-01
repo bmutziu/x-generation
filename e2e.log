@@ -1,0 +1,232 @@
+❯ make e2e
+21:22:05 [ .. ] installing kubectl v1.24.3
+21:24:11 [ OK ] installing kubectl v1.24.3
+21:24:11 [ .. ] installing kind v0.16.0
+21:24:46 [ OK ] installing kind v0.16.0
+21:24:46 [ .. ] setting up controlplane
+Creating cluster "uptest" ...
+ ✓ Ensuring node image (kindest/node:v1.25.2) 🖼 
+ ✓ Preparing nodes 📦  
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+Set kubectl context to "kind-uptest"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-uptest
+
+Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+UXP 1.13.2-up.3 installed
+deployment.apps/crossplane condition met
+21:31:26 [ OK ] setting up controlplane
+21:31:26 [ .. ] verify go modules dependencies have expected content
+all modules verified
+21:31:27 [ OK ] go modules dependencies verified
+21:31:28 [ .. ] go build linux_arm64
+21:31:28 [ OK ] go build linux_arm64
+21:31:28 [ .. ] Building package x-generation-v0.8.0-dirty.xpkg for linux_arm64
+xpkg saved to /Users/bmutziu/work/k8s/x-generation/_output/xpkg/linux_arm64/x-generation-v0.8.0-dirty.xpkg
+21:31:28 [ OK ] Built package x-generation-v0.8.0-dirty.xpkg for linux_arm64
+21:31:28 [ .. ] installing uptest /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/uptest-v0.1.0
+21:32:00 [ OK ] installing uptest /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/uptest-v0.1.0
+21:32:00 [ .. ] installing kuttl 0.12.1
+21:33:51 [ OK ] installing kuttl 0.12.1
+21:33:51 [ .. ] patching Crossplane with dev sidecar
+deployment.apps/crossplane patched
+deployment.apps/crossplane condition met
+pod/crossplane-669b578cd7-qlmfb condition met
+21:34:04 [ OK ] patching Crossplane with dev sidecar
+21:34:04 [ .. ] copying local xpkg cache to Crossplane pod
+xpkg contents extracted to /Users/bmutziu/work/k8s/x-generation/_output/xpkg/cache/x-generation-v0.8.0-dirty.gz
+xpkg contents extracted to /Users/bmutziu/work/k8s/x-generation/_output/xpkg/cache/x-generation-v0.8.0.gz
+21:34:04 [ OK ] copying local xpkg cache to Crossplane pod
+21:34:04 [ .. ] deploying configuration package x-generation v0.8.0-dirty
+configuration.pkg.crossplane.io/x-generation created
+21:34:05 [ OK ] deploying configuration package x-generation v0.8.0-dirty
+21:34:05 [ .. ] running automated tests
+Running kuttl tests at /var/folders/5w/cl4y59dx44j3kgh7yr3lgjsw0000gn/T/uptest-e2e
+2023/11/01 21:34:06 running without a 'kuttl-test.yaml' configuration
+2023/11/01 21:34:06 kutt-test config testdirs is overridden with args: [ /var/folders/5w/cl4y59dx44j3kgh7yr3lgjsw0000gn/T/uptest-e2e ]
+=== RUN   kuttl
+    harness.go:460: starting setup
+    harness.go:251: running tests using configured kubeconfig.
+    harness.go:288: Successful connection to cluster at: https://127.0.0.1:54785
+    harness.go:356: running tests
+    harness.go:74: going to run test suite with timeout of 2400 seconds for each step
+    harness.go:368: testsuite: /var/folders/5w/cl4y59dx44j3kgh7yr3lgjsw0000gn/T/uptest-e2e has 1 tests
+=== RUN   kuttl/harness
+=== RUN   kuttl/harness/case
+=== PAUSE kuttl/harness/case
+=== CONT  kuttl/harness/case
+    logger.go:42: 21:34:07 | case | Creating namespace: kuttl-test-picked-sponge
+    logger.go:42: 21:34:07 | case/0-apply | starting test step 0-apply
+    logger.go:42: 21:34:07 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/setup.sh]
+    logger.go:42: 21:34:07 | case/0-apply | Running setup.sh
+    logger.go:42: 21:34:07 | case/0-apply | Waiting until configuration package is healthy/installed...
+    logger.go:42: 21:37:47 | case/0-apply | configuration.pkg.crossplane.io/x-generation condition met
+    logger.go:42: 21:37:47 | case/0-apply | configuration.pkg.crossplane.io/x-generation condition met
+    logger.go:42: 21:38:25 | case/0-apply | provider.pkg.crossplane.io/crossplane-contrib-provider-aws condition met
+    logger.go:42: 21:38:25 | case/0-apply | customresourcedefinition.apiextensions.k8s.io/providerconfigs.aws.crossplane.io condition met
+    logger.go:42: 21:38:31 | case/0-apply | provider.pkg.crossplane.io/crossplane-contrib-provider-zpa condition met
+    logger.go:42: 21:38:31 | case/0-apply | customresourcedefinition.apiextensions.k8s.io/providerconfigs.zpa.crossplane.io condition met
+    logger.go:42: 21:42:07 | case/0-apply | provider.pkg.crossplane.io/upbound-release-candidates-provider-aws-iam condition met
+    logger.go:42: 21:42:07 | case/0-apply | customresourcedefinition.apiextensions.k8s.io/providerconfigs.aws.upbound.io condition met
+    logger.go:42: 21:43:07 | case/0-apply | Creating a secret default provider config
+    logger.go:42: 21:43:08 | case/0-apply | secret/aws-creds created
+    logger.go:42: 21:43:08 | case/0-apply | Creating a default provider config
+    logger.go:42: 21:43:09 | case/0-apply | providerconfig.aws.crossplane.io/123456789101-example created
+    logger.go:42: 21:43:09 | case/0-apply | Creating a secret default provider zpa config
+    logger.go:42: 21:43:09 | case/0-apply | secret/zpa-creds created
+    logger.go:42: 21:43:09 | case/0-apply | Creating a default provider zpa config
+    logger.go:42: 21:43:09 | case/0-apply | providerconfig.zpa.crossplane.io/123456789101-example created
+    logger.go:42: 21:43:09 | case/0-apply | Creating a secret default offical provider awsconfig
+    logger.go:42: 21:43:09 | case/0-apply | secret/offical-aws-creds created
+    logger.go:42: 21:43:09 | case/0-apply | Creating a default provider config
+    logger.go:42: 21:43:09 | case/0-apply | providerconfig.aws.upbound.io/123456789101-example created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-db created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-bucket created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-bucket-policy created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-kms created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-kms-alias created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-instance-profile created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-iam-policy created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-role-policy-attachment created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-role created
+    logger.go:42: 21:43:09 | case/0-apply | namespace/assert-zpa created
+I1101 21:43:11.041351   31327 request.go:655] Throttling request took 1.0447375s, request: GET:https://127.0.0.1:54785/apis/coordination.k8s.io/v1?timeout=32s
+    logger.go:42: 21:43:13 | case/0-apply | Bucket:assert-bucket/example-bucket created
+    logger.go:42: 21:43:13 | case/0-apply | Policy:assert-iam-policy/example-policy created
+    logger.go:42: 21:43:13 | case/0-apply | SegmentGroup:assert-zpa/example-segment created
+    logger.go:42: 21:43:14 | case/0-apply | DBInstance:assert-db/example-dbinstance created
+    logger.go:42: 21:43:14 | case/0-apply | Key:assert-kms/example-key created
+    logger.go:42: 21:43:14 | case/0-apply | Alias:assert-kms-alias/example-alias created
+    logger.go:42: 21:43:14 | case/0-apply | BucketPolicy:assert-bucket-policy/example-bucket-policy created
+    logger.go:42: 21:43:14 | case/0-apply | Role:assert-role/example-role created
+    logger.go:42: 21:43:14 | case/0-apply | InstanceProfile:assert-instance-profile/example-instance-profile created
+    logger.go:42: 21:43:14 | case/0-apply | RolePolicyAttachment:assert-role-policy-attachment/example-role-policy-attachment created
+    logger.go:42: 21:43:14 | case/0-apply | DBInstance:assert-db/example-aurora-mysql-instance created
+    logger.go:42: 21:43:14 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 annotate managed --all upjet.upbound.io/test=true --overwrite]
+    logger.go:42: 21:43:16 | case/0-apply | role.iam.aws.crossplane.io/example-role-k7zvq-vpzh2 annotated
+    logger.go:42: 21:43:16 | case/0-apply | rolepolicyattachment.iam.aws.crossplane.io/example-role-policy-attachment-krlrh-p64pn annotated
+    logger.go:42: 21:43:16 | case/0-apply | instanceprofile.iam.aws.crossplane.io/example-instance-profile-rjpxc-d6ss4 annotated
+    logger.go:42: 21:43:16 | case/0-apply | key.kms.aws.crossplane.io/example-key annotated
+    logger.go:42: 21:43:16 | case/0-apply | alias.kms.aws.crossplane.io/example-alias annotated
+    logger.go:42: 21:43:16 | case/0-apply | dbinstance.rds.aws.crossplane.io/example-aurora-mysql-instance-2nwhf-dbt2v annotated
+    logger.go:42: 21:43:16 | case/0-apply | dbinstance.rds.aws.crossplane.io/example-dbinstance-tcrwh-s8kkj annotated
+    logger.go:42: 21:43:16 | case/0-apply | segmentgroup.zpa.crossplane.io/example-segment annotated
+    logger.go:42: 21:43:16 | case/0-apply | bucket.s3.aws.crossplane.io/example-bucket-5r745-ngwp8 annotated
+    logger.go:42: 21:43:16 | case/0-apply | Warning: BucketPolicy has been deprecated. Use spec.forProvider.policy in Bucket instead.
+    logger.go:42: 21:43:16 | case/0-apply | bucketpolicy.s3.aws.crossplane.io/example-bucket-policy-ljxjf-svqdj annotated
+    logger.go:42: 21:43:16 | case/0-apply | policy.iam.aws.upbound.io/example-policy annotated
+    logger.go:42: 21:43:16 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait bucket.s3.aws.example.cloud/example-bucket --for=condition=Ready=False --timeout 10s --namespace assert-bucket]
+    logger.go:42: 21:43:17 | case/0-apply | bucket.s3.aws.example.cloud/example-bucket condition met
+    logger.go:42: 21:43:17 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/s3-bucket/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:19 | case/0-apply | I1101 21:43:19.549530   31999 request.go:655] Throttling request took 1.046349041s, request: GET:https://127.0.0.1:54785/apis/cloudfront.aws.crossplane.io/v1alpha1?timeout=32s
+    logger.go:42: 21:43:22 | case/0-apply | assert is valid
+    logger.go:42: 21:43:22 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait policy.iam.aws.example.cloud/example-policy --for=condition=Ready=False --timeout 10s --namespace assert-iam-policy]
+    logger.go:42: 21:43:23 | case/0-apply | policy.iam.aws.example.cloud/example-policy condition met
+    logger.go:42: 21:43:23 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/iam-policy/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:25 | case/0-apply | I1101 21:43:25.356536   32014 request.go:655] Throttling request took 1.044096125s, request: GET:https://127.0.0.1:54785/apis/emrcontainers.aws.crossplane.io/v1alpha1?timeout=32s
+    logger.go:42: 21:43:28 | case/0-apply | assert is valid
+    logger.go:42: 21:43:28 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait segmentgroup.zpa.example.cloud/example-segment --for=condition=Ready=False --timeout 10s --namespace assert-zpa]
+    logger.go:42: 21:43:29 | case/0-apply | segmentgroup.zpa.example.cloud/example-segment condition met
+    logger.go:42: 21:43:29 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/zpa-segment-group/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:31 | case/0-apply | I1101 21:43:31.260186   32027 request.go:655] Throttling request took 1.043899666s, request: GET:https://127.0.0.1:54785/apis/coordination.k8s.io/v1?timeout=32s
+    logger.go:42: 21:43:34 | case/0-apply | assert is valid
+    logger.go:42: 21:43:34 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait dbinstance.rds.aws.example.cloud/example-dbinstance --for=condition=Ready=False --timeout 10s --namespace assert-db]
+    logger.go:42: 21:43:35 | case/0-apply | dbinstance.rds.aws.example.cloud/example-dbinstance condition met
+    logger.go:42: 21:43:35 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/rds-db-instance/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:37 | case/0-apply | I1101 21:43:37.134610   32042 request.go:655] Throttling request took 1.038499375s, request: GET:https://127.0.0.1:54785/apis/lambda.aws.crossplane.io/v1beta1?timeout=32s
+    logger.go:42: 21:43:40 | case/0-apply | assert is valid
+    logger.go:42: 21:43:40 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait key.kms.aws.example.cloud/example-key --for=condition=Ready=False --timeout 10s --namespace assert-kms]
+    logger.go:42: 21:43:41 | case/0-apply | key.kms.aws.example.cloud/example-key condition met
+    logger.go:42: 21:43:41 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/kms-key/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:42 | case/0-apply | I1101 21:43:42.967490   32057 request.go:655] Throttling request took 1.043440958s, request: GET:https://127.0.0.1:54785/apis/acm.aws.crossplane.io/v1beta1?timeout=32s
+    logger.go:42: 21:43:45 | case/0-apply | assert is valid
+    logger.go:42: 21:43:45 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait alias.kms.aws.example.cloud/example-alias --for=condition=Ready=False --timeout 10s --namespace assert-kms-alias]
+    logger.go:42: 21:43:47 | case/0-apply | alias.kms.aws.example.cloud/example-alias condition met
+    logger.go:42: 21:43:47 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/kms-alias/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:48 | case/0-apply | I1101 21:43:48.810124   32072 request.go:655] Throttling request took 1.039607333s, request: GET:https://127.0.0.1:54785/apis/aws.crossplane.io/v1beta1?timeout=32s
+    logger.go:42: 21:43:51 | case/0-apply | assert is valid
+    logger.go:42: 21:43:51 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait bucketpolicy.s3.aws.example.cloud/example-bucket-policy --for=condition=Ready=False --timeout 10s --namespace assert-bucket-policy]
+    logger.go:42: 21:43:53 | case/0-apply | bucketpolicy.s3.aws.example.cloud/example-bucket-policy condition met
+    logger.go:42: 21:43:53 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/s3-bucket-policy/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:43:53 | case/0-apply | Warning: BucketPolicy has been deprecated. Use spec.forProvider.policy in Bucket instead.
+    logger.go:42: 21:43:54 | case/0-apply | I1101 21:43:54.943614   32085 request.go:655] Throttling request took 1.044734375s, request: GET:https://127.0.0.1:54785/apis/opensearchservice.aws.crossplane.io/v1alpha1?timeout=32s
+    logger.go:42: 21:43:57 | case/0-apply | W1101 21:43:57.865224   32085 warnings.go:70] BucketPolicy has been deprecated. Use spec.forProvider.policy in Bucket instead.
+    logger.go:42: 21:43:57 | case/0-apply | assert is valid
+    logger.go:42: 21:43:57 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait role.iam.aws.example.cloud/example-role --for=condition=Ready=False --timeout 10s --namespace assert-role]
+    logger.go:42: 21:43:59 | case/0-apply | role.iam.aws.example.cloud/example-role condition met
+    logger.go:42: 21:43:59 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/iam-role/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:44:00 | case/0-apply | I1101 21:44:00.937974   32103 request.go:655] Throttling request took 1.044695s, request: GET:https://127.0.0.1:54785/apis/cache.aws.crossplane.io/v1alpha1?timeout=32s
+    logger.go:42: 21:44:03 | case/0-apply | assert is valid
+    logger.go:42: 21:44:03 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait instanceprofile.iam.aws.example.cloud/example-instance-profile --for=condition=Ready=False --timeout 10s --namespace assert-instance-profile]
+    logger.go:42: 21:44:05 | case/0-apply | instanceprofile.iam.aws.example.cloud/example-instance-profile condition met
+    logger.go:42: 21:44:05 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/iam-instanceprofile/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:44:06 | case/0-apply | I1101 21:44:06.754103   32115 request.go:655] Throttling request took 1.042768583s, request: GET:https://127.0.0.1:54785/apis/apigateway.aws.crossplane.io/v1alpha1?timeout=32s
+    logger.go:42: 21:44:09 | case/0-apply | assert is valid
+    logger.go:42: 21:44:09 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait rolepolicyattachment.iam.aws.example.cloud/example-role-policy-attachment --for=condition=Ready=False --timeout 10s --namespace assert-role-policy-attachment]
+    logger.go:42: 21:44:11 | case/0-apply | rolepolicyattachment.iam.aws.example.cloud/example-role-policy-attachment condition met
+    logger.go:42: 21:44:11 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/iam-rolepolicyattachment/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:44:12 | case/0-apply | I1101 21:44:12.565928   32132 request.go:655] Throttling request took 1.043719458s, request: GET:https://127.0.0.1:54785/apis/admissionregistration.k8s.io/v1?timeout=32s
+    logger.go:42: 21:44:15 | case/0-apply | assert is valid
+    logger.go:42: 21:44:15 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait dbinstance.rds.aws.example.cloud/example-aurora-mysql-instance --for=condition=Ready=False --timeout 10s --namespace assert-db]
+    logger.go:42: 21:44:16 | case/0-apply | dbinstance.rds.aws.example.cloud/example-aurora-mysql-instance condition met
+    logger.go:42: 21:44:16 | case/0-apply | running command: [/Users/bmutziu/work/k8s/x-generation/test/tests/package/rds-aurora-instance/post-assert.sh /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 /Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kuttl-0.12.1]
+    logger.go:42: 21:44:18 | case/0-apply | I1101 21:44:18.467332   32149 request.go:655] Throttling request took 1.044155333s, request: GET:https://127.0.0.1:54785/apis/elasticache.aws.crossplane.io/v1alpha1?timeout=32s
+    logger.go:42: 21:44:21 | case/0-apply | assert is valid
+    logger.go:42: 21:44:21 | case/0-apply | test step completed 0-apply
+    logger.go:42: 21:44:21 | case/1-delete | starting test step 1-delete
+    logger.go:42: 21:44:21 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete bucket.s3.aws.example.cloud/example-bucket --wait=false --namespace assert-bucket]
+    logger.go:42: 21:44:22 | case/1-delete | bucket.s3.aws.example.cloud "example-bucket" deleted
+    logger.go:42: 21:44:22 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete policy.iam.aws.example.cloud/example-policy --wait=false --namespace assert-iam-policy]
+    logger.go:42: 21:44:24 | case/1-delete | policy.iam.aws.example.cloud "example-policy" deleted
+    logger.go:42: 21:44:24 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete segmentgroup.zpa.example.cloud/example-segment --wait=false --namespace assert-zpa]
+    logger.go:42: 21:44:25 | case/1-delete | segmentgroup.zpa.example.cloud "example-segment" deleted
+    logger.go:42: 21:44:25 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete dbinstance.rds.aws.example.cloud/example-dbinstance --wait=false --namespace assert-db]
+    logger.go:42: 21:44:27 | case/1-delete | dbinstance.rds.aws.example.cloud "example-dbinstance" deleted
+    logger.go:42: 21:44:27 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete key.kms.aws.example.cloud/example-key --wait=false --namespace assert-kms]
+    logger.go:42: 21:44:28 | case/1-delete | key.kms.aws.example.cloud "example-key" deleted
+    logger.go:42: 21:44:28 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete alias.kms.aws.example.cloud/example-alias --wait=false --namespace assert-kms-alias]
+    logger.go:42: 21:44:29 | case/1-delete | alias.kms.aws.example.cloud "example-alias" deleted
+    logger.go:42: 21:44:29 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete bucketpolicy.s3.aws.example.cloud/example-bucket-policy --wait=false --namespace assert-bucket-policy]
+    logger.go:42: 21:44:31 | case/1-delete | bucketpolicy.s3.aws.example.cloud "example-bucket-policy" deleted
+    logger.go:42: 21:44:31 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete role.iam.aws.example.cloud/example-role --wait=false --namespace assert-role]
+    logger.go:42: 21:44:32 | case/1-delete | role.iam.aws.example.cloud "example-role" deleted
+    logger.go:42: 21:44:32 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete instanceprofile.iam.aws.example.cloud/example-instance-profile --wait=false --namespace assert-instance-profile]
+    logger.go:42: 21:44:33 | case/1-delete | instanceprofile.iam.aws.example.cloud "example-instance-profile" deleted
+    logger.go:42: 21:44:33 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete rolepolicyattachment.iam.aws.example.cloud/example-role-policy-attachment --wait=false --namespace assert-role-policy-attachment]
+    logger.go:42: 21:44:35 | case/1-delete | rolepolicyattachment.iam.aws.example.cloud "example-role-policy-attachment" deleted
+    logger.go:42: 21:44:35 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 delete dbinstance.rds.aws.example.cloud/example-aurora-mysql-instance --wait=false --namespace assert-db]
+    logger.go:42: 21:44:36 | case/1-delete | dbinstance.rds.aws.example.cloud "example-aurora-mysql-instance" deleted
+I1101 21:44:37.795932   31327 request.go:655] Throttling request took 1.044464292s, request: GET:https://127.0.0.1:54785/apis/secretsmanager.aws.crossplane.io/v1beta1?timeout=32s
+    logger.go:42: 21:44:40 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait bucket.s3.aws.example.cloud/example-bucket --for=delete --timeout 10s --namespace assert-bucket]
+    logger.go:42: 21:44:42 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait policy.iam.aws.example.cloud/example-policy --for=delete --timeout 10s --namespace assert-iam-policy]
+    logger.go:42: 21:44:43 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait segmentgroup.zpa.example.cloud/example-segment --for=delete --timeout 10s --namespace assert-zpa]
+    logger.go:42: 21:44:44 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait dbinstance.rds.aws.example.cloud/example-dbinstance --for=delete --timeout 10s --namespace assert-db]
+    logger.go:42: 21:44:46 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait key.kms.aws.example.cloud/example-key --for=delete --timeout 10s --namespace assert-kms]
+    logger.go:42: 21:44:47 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait alias.kms.aws.example.cloud/example-alias --for=delete --timeout 10s --namespace assert-kms-alias]
+    logger.go:42: 21:44:49 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait bucketpolicy.s3.aws.example.cloud/example-bucket-policy --for=delete --timeout 10s --namespace assert-bucket-policy]
+    logger.go:42: 21:44:50 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait role.iam.aws.example.cloud/example-role --for=delete --timeout 10s --namespace assert-role]
+    logger.go:42: 21:44:52 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait instanceprofile.iam.aws.example.cloud/example-instance-profile --for=delete --timeout 10s --namespace assert-instance-profile]
+    logger.go:42: 21:44:53 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait rolepolicyattachment.iam.aws.example.cloud/example-role-policy-attachment --for=delete --timeout 10s --namespace assert-role-policy-attachment]
+    logger.go:42: 21:44:55 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait dbinstance.rds.aws.example.cloud/example-aurora-mysql-instance --for=delete --timeout 10s --namespace assert-db]
+    logger.go:42: 21:44:56 | case/1-delete | running command: [/Users/bmutziu/work/k8s/x-generation/.cache/tools/darwin_arm64/kubectl-v1.24.3 wait managed --all --for=delete --timeout 10s]
+    logger.go:42: 21:44:58 | case/1-delete | Warning: BucketPolicy has been deprecated. Use spec.forProvider.policy in Bucket instead.
+    logger.go:42: 21:44:58 | case/1-delete | test step completed 1-delete
+I1101 21:44:59.934546   31327 request.go:655] Throttling request took 1.047758083s, request: GET:https://127.0.0.1:54785/apis/flowcontrol.apiserver.k8s.io/v1beta1?timeout=32s
+    logger.go:42: 21:45:02 | case | Failed to collect events for case in ns kuttl-test-picked-sponge: no matches for kind "Event" in version "events.k8s.io/v1beta1"
+    logger.go:42: 21:45:02 | case | Trying with events eventsv1 API...
+    logger.go:42: 21:45:02 | case | case events from ns kuttl-test-picked-sponge:
+    logger.go:42: 21:45:02 | case | Deleting namespace: kuttl-test-picked-sponge
+=== CONT  kuttl
+    harness.go:402: run tests finished
+    harness.go:511: cleaning up
+    harness.go:553: skipping cluster tear down
+    harness.go:554: to connect to the cluster, run: export KUBECONFIG="/Users/bmutziu/work/k8s/x-generation/kubeconfig"
+--- PASS: kuttl (656.37s)
+    --- PASS: kuttl/harness (0.00s)
+        --- PASS: kuttl/harness/case (655.87s)
+PASS
+21:45:02 [ OK ] running automated tests
